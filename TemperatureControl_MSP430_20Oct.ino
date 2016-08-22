@@ -1,5 +1,26 @@
 
 /*
+    TemperatureControl_MSP430_20Oct
+    Copyright (C) 2014  Alan Hutchenreuther
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+    
+ The purpose of this application is to control the yogurt brewing temperature.
+ This is done by maintaining a 105 degF chamber temperature through simple ON/OFF control of an incandescent lamp.
+ A histeresis band is set about the setpoint temperature to reduce the 
+ number of heating/cooling cycles and preserve life of the lamp and relay.   
+
   This is a conversion of an Arduino application to run on a Launchpad v1.4 with MSP430G2553.
   Development environment is Energia 0101E0012 or later.
   
@@ -9,31 +30,6 @@
     by Tom Igoe
  
  This example code is part of the public domain 
- 
- The purpose of this code is to control the yogurt brewing temperature.
- This is done by maintaining a 105 degF chamber temperature through ON/OFF control of an incandescent lamp.
- A histeresis band is set about the setpoint temperature to reduce the 
- number of heating/cooling cycles and preserve relay life.   
-  
- Safety feature:
- Prevent heater from being stuck ON if temperature sensor or connection fails.
- 
- Revision History
- 12Sept14 
- G2231 V1.4 does not fit.
- G2553 V1.4 4,495 bytes (of a 16,384 byte max)   (Float library, no LCD, Heater control)
- G2553 V1.4, 7,631 bytes (of a 16,384 byte max)  (Float, no LCD, Heater control, Software Serial library)
- G2553 V1.4, 7,670 bytes (of a 16,384 byte max)  (Float, no LCD, Heater control, Software Serial library, GREEN_LED blink)
- 18Oct14 
- G2553 V1.4  4532 bytes (of a 16,384 byte max)   (Float, Heater control, GREEN_LED blink, remove Software Serial lib.  Add LiquidCrystal.lib
-     Issues: Serial does not work. Forum shows corrective actions that have not worked for me yet.
-     Issue working on:  re-define pins that drive display.
- 20Oct14
- G2553 V1.4  7,677 bytes (of a 16,384 byte maximum)  (Float, Heater control, GREEN_LED blink, remove Software Serial lib.  Add LiquidCrystal.lib)
-     LCD display pins redefined & wired on adapter board.
-     HEATER_PIN definition changed from 7 to P1_7 for G2553
-     ajh141023 code version 4.1 - Change analog reference from Default to 1.5 V.  Upper temperature measurement limit of ADC is 212 degF 
-     
 */
 #include <LiquidCrystal.h>
 
